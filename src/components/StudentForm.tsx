@@ -155,7 +155,7 @@ export default function StudentForm({
                   <Select
                     {...field}
                     placeholder="Select course"
-                    options={["React", "TypeScript", "JavaScript", "Full Stack"].map((course) => ({
+                    options={["React", "TypeScript", "JavaScript", "Full Stack" ,"Others"].map((course) => ({
                       label: course,
                       value: course,
                     }))}

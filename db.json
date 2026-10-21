@@ -27,7 +27,7 @@
       "phone": "1234567890",
       "city": "tirupur",
       "pinCode": "641602",
-      "status": "Active",
+      "status": "Graduated",
       "course": "JavaScript",
       "additionalCourses": [],
       "id": "EuPYqEGJ7eo"
@@ -100,5 +100,7 @@
       "id": "ab13176b-3f8c-4359-ba0f-8ed12dcae663"
     }
   ],
-  "$schema": "./node_modules/json-server/schema.json"
+  "$schema": [
+    "./node_modules/json-server/schema.json"
+  ]
 }
