@@ -1,0 +1,72 @@
+import type { Student } from "../types/Student";
+import { Button, Empty, Popconfirm, Space, Table, Typography } from "antd";
+import type { TableColumnsType } from "antd";
+
+interface StudentListProps {
+  students: Student[];
+  onEdit: (student: Student) => void;
+  onDelete: (id: string | number) => void;
+  isDeleting: boolean;
+}
+
+export default function StudentList({
+  students,
+  onEdit,
+  onDelete,
+  isDeleting,
+}: StudentListProps) {
+  const columns: TableColumnsType<Student> = [
+    {
+      title: "S. No.",
+      key: "serial",
+      width: 80,
+      render: (_value, _student, index) => index + 1,
+    },
+    { title: "Name", dataIndex: "name", key: "name" },
+    { title: "Email", dataIndex: "email", key: "email" },
+    { title: "Phone", dataIndex: "phone", key: "phone", render: (phone: string | null) => phone || "-" },
+    { title: "City", dataIndex: "city", key: "city", render: (city: string | null) => city || "-" },
+    { title: "PIN Code", dataIndex: "pinCode", key: "pinCode", render: (pinCode: string | null) => pinCode || "-" },
+    {
+      title: "Course",
+      key: "course",
+      render: (_value, student) =>
+        [student.course, ...(student.additionalCourses ?? []).map(({ name }) => name)].join(", "),
+    },
+    {
+      title: "Actions",
+      key: "actions",
+      render: (_value, student) => (
+        <Space>
+          <Button onClick={() => onEdit(student)}>Edit</Button>
+          <Popconfirm
+            title={`Delete ${student.name}?`}
+            onConfirm={() => onDelete(student.id)}
+            okText="Delete"
+            okButtonProps={{ danger: true, loading: isDeleting }}
+          >
+            <Button danger disabled={isDeleting}>Delete</Button>
+          </Popconfirm>
+        </Space>
+      ),
+    },
+  ];
+
+  return (
+    <>
+      {students.length === 0 && (
+        <Typography.Paragraph type="secondary" className="empty-hint">
+          Add your first student or adjust the search.
+        </Typography.Paragraph>
+      )}
+      <Table<Student>
+        rowKey={(student) => String(student.id)}
+        columns={columns}
+        dataSource={students}
+        pagination={{ pageSize: 8, showSizeChanger: true }}
+        scroll={{ x: 900 }}
+        locale={{ emptyText: <Empty description="No students found" /> }}
+      />
+    </>
+  );
+}

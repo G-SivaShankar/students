@@ -1,0 +1,15 @@
+{
+  "students": [
+    {
+      "name": "siva",
+      "email": "sivashan@gmail.com",
+      "phone": "1234565432",
+      "city": "tiru",
+      "pinCode": "641603",
+      "course": "React",
+      "additionalCourses": [],
+      "id": "8G79UlkzbZ4"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
