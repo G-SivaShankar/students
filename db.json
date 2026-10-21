@@ -72,6 +72,32 @@
         }
       ],
       "id": "Y5RZzxmgCH8"
+    },
+    {
+      "name": "chan",
+      "email": "chan@gmail.com",
+      "phone": "3454535352",
+      "city": "tirunelveli",
+      "pinCode": "657642",
+      "status": "On leave",
+      "course": "TypeScript",
+      "additionalCourses": [],
+      "id": "fffe173f-5025-425c-a61a-d3734eaa471f"
+    },
+    {
+      "name": "manoj",
+      "email": "mano@gmail.com",
+      "phone": "8877876777",
+      "city": "vellore",
+      "pinCode": "687654",
+      "status": "On leave",
+      "course": "Full Stack",
+      "additionalCourses": [
+        {
+          "name": "python full stack"
+        }
+      ],
+      "id": "ab13176b-3f8c-4359-ba0f-8ed12dcae663"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

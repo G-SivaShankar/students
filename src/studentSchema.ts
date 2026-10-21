@@ -22,7 +22,7 @@ const studentEnrollmentSchema = z.object({
     .string()
     .trim()
     .min(1, "Select a course")
-    .pipe(z.enum(["React", "TypeScript", "JavaScript", "Full Stack"], {
+    .pipe(z.enum(["React", "TypeScript", "JavaScript", "Full Stack","Others"], {
     error: "Select a course",
     })),
   additionalCourses: z
