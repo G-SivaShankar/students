@@ -1,17 +1,16 @@
 import type { Student } from "../types/Student";
 import { Button, Empty, Popconfirm, Space, Table, Typography } from "antd";
 import type { TableColumnsType } from "antd";
+import Link from "next/link";
 
 interface StudentListProps {
   students: Student[];
-  onEdit: (student: Student) => void;
   onDelete: (id: string | number) => void;
   isDeleting: boolean;
 }
 
 export default function StudentList({
   students,
-  onEdit,
   onDelete,
   isDeleting,
 }: StudentListProps) {
@@ -22,7 +21,12 @@ export default function StudentList({
       width: 80,
       render: (_value, _student, index) => index + 1,
     },
-    { title: "Name", dataIndex: "name", key: "name" },
+    {
+      title: "Name",
+      dataIndex: "name",
+      key: "name",
+      render: (name: string, student) => <Link href={`/students/${student.id}`}>{name}</Link>,
+    },
     { title: "Email", dataIndex: "email", key: "email" },
     { title: "Phone", dataIndex: "phone", key: "phone", render: (phone: string | null) => phone || "-" },
     { title: "City", dataIndex: "city", key: "city", render: (city: string | null) => city || "-" },
@@ -39,7 +43,7 @@ export default function StudentList({
       key: "actions",
       render: (_value, student) => (
         <Space>
-          <Button onClick={() => onEdit(student)}>Edit</Button>
+          <Button href={`/students/${student.id}`}>Details</Button>
           <Popconfirm
             title={`Delete ${student.name}?`}
             onConfirm={() => onDelete(student.id)}

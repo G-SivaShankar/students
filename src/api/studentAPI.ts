@@ -1,37 +1,55 @@
-import axios from "axios";
 import type { Student, StudentInput } from "../types/Student";
 
-const API_URL = "http://localhost:3001/students";
+const API_URL = "/api/students";
 
-// READ: Get all students
+async function request<T>(url: string, options?: RequestInit): Promise<T> {
+  const response = await fetch(url, {
+    ...options,
+    headers: {
+      ...(options?.body ? { "Content-Type": "application/json" } : {}),
+      ...options?.headers,
+    },
+    cache: "no-store",
+  });
+
+  if (!response.ok) {
+    const body = await response.json().catch(() => null) as { error?: string } | null;
+    throw new Error(body?.error ?? `Request failed (${response.status})`);
+  }
+
+  if (response.status === 204) return undefined as T;
+  return response.json() as Promise<T>;
+}
+
 export const getStudents = async (): Promise<Student[]> => {
-  const response = await axios.get<Student[]>(API_URL);
-  return response.data;
+  return request<Student[]>(API_URL);
 };
 
-// CREATE: Add a student
+export const getStudent = async (id: string | number): Promise<Student> => {
+  return request<Student>(`${API_URL}/${id}`);
+};
+
 export const addStudent = async (
-  student: StudentInput
+  student: StudentInput,
 ): Promise<Student> => {
-  const response = await axios.post<Student>(API_URL, student);
-  return response.data;
+  return request<Student>(API_URL, {
+    method: "POST",
+    body: JSON.stringify(student),
+  });
 };
 
-// UPDATE: Edit a student
 export const updateStudent = async (
   id: string | number,
-  student: StudentInput
+  student: StudentInput,
 ): Promise<Student> => {
-  const response = await axios.put<Student>(
-    `${API_URL}/${id}`,
-    student
-  );
-  return response.data;
+  return request<Student>(`${API_URL}/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(student),
+  });
 };
 
-// DELETE: Remove a student
 export const deleteStudent = async (
-  id: string | number
+  id: string | number,
 ): Promise<void> => {
-  await axios.delete(`${API_URL}/${id}`);
+  await request<void>(`${API_URL}/${id}`, { method: "DELETE" });
 };
