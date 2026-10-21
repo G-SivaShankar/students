@@ -21,6 +21,7 @@ const emptyStudent: StudentFormValues = {
   phone: "",
   city: "",
   pinCode: "",
+  status: "Active",
   course: "",
   additionalCourses: [],
 };
@@ -54,6 +55,7 @@ export default function StudentForm({
         phone: editingStudent.phone ?? "",
         city: editingStudent.city ?? "",
         pinCode: editingStudent.pinCode ?? "",
+        status: editingStudent.status ?? "Active",
         course: editingStudent.course,
         additionalCourses: editingStudent.additionalCourses ?? [],
       });
@@ -124,6 +126,23 @@ export default function StudentForm({
                 control={control}
                 name="pinCode"
                 render={({ field }) => <Input {...field} placeholder="PIN Code" />}
+              />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={12}>
+            <Form.Item label="Enrollment status">
+              <Controller
+                control={control}
+                name="status"
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={["Active", "Graduated", "On leave"].map((status) => ({
+                      label: status,
+                      value: status,
+                    }))}
+                  />
+                )}
               />
             </Form.Item>
           </Col>

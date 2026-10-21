@@ -9,6 +9,69 @@
       "course": "React",
       "additionalCourses": [],
       "id": "8G79UlkzbZ4"
+    },
+    {
+      "name": "ram",
+      "email": "ram123@gmail.com",
+      "phone": "2233334331",
+      "city": "coimbatore",
+      "pinCode": "641652",
+      "status": "Active",
+      "course": "Full Stack",
+      "additionalCourses": [],
+      "id": "Fz7zz31emgs"
+    },
+    {
+      "name": "shan",
+      "email": "shan345@gmail.com",
+      "phone": "1234567890",
+      "city": "tirupur",
+      "pinCode": "641602",
+      "status": "Active",
+      "course": "JavaScript",
+      "additionalCourses": [],
+      "id": "EuPYqEGJ7eo"
+    },
+    {
+      "name": "kumar",
+      "email": "kumar@gmail.com",
+      "phone": "2345678122",
+      "city": "erode",
+      "pinCode": "643652",
+      "status": "Active",
+      "course": "React",
+      "additionalCourses": [],
+      "id": "bkP4CEaeByI"
+    },
+    {
+      "name": "mohan",
+      "email": "moha@gmail.com",
+      "phone": "1234563212",
+      "city": "tirupur",
+      "pinCode": "641603",
+      "status": "Graduated",
+      "course": "Full Stack",
+      "additionalCourses": [
+        {
+          "name": "testing"
+        }
+      ],
+      "id": "JZ0FJtMmm9k"
+    },
+    {
+      "name": "rajan",
+      "email": "rajaa@gmail.com",
+      "phone": "7363673767",
+      "city": "tirupur",
+      "pinCode": "641603",
+      "status": "Graduated",
+      "course": "TypeScript",
+      "additionalCourses": [
+        {
+          "name": "python"
+        }
+      ],
+      "id": "Y5RZzxmgCH8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

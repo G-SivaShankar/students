@@ -4,7 +4,7 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { Alert, Card, Input, Spin, Statistic, Typography } from "antd";
+import { Alert, Card, Input, Select, Spin, Statistic, Typography } from "antd";
 
 import {
   getStudents,
@@ -19,6 +19,7 @@ import StudentList from "./components/StudentList";
 import type { Student, StudentInput } from "./types/Student";
 
 const STUDENTS_KEY = ["students"];
+const ENROLLMENT_STATUSES = ["Active", "Graduated", "On leave"] as const;
 
 export default function App() {
   const queryClient = useQueryClient();
@@ -27,6 +28,7 @@ export default function App() {
     useState<Student | null>(null);
 
   const [search, setSearch] = useState("");
+  const [statusFilter, setStatusFilter] = useState<string>("All");
 
   // read
   const {
@@ -106,9 +108,9 @@ export default function App() {
           pinCode.includes(searchText) ||
           course.includes(searchText) ||
           additionalCourses
-        );
+        ) && (statusFilter === "All" || (student.status ?? "Active") === statusFilter);
       });
-  }, [students, search]);
+  }, [students, search, statusFilter]);
 
   const isSaving =
     createMutation.isPending || updateMutation.isPending;
@@ -149,6 +151,16 @@ export default function App() {
             value={search}
             onChange={(event) => setSearch(event.target.value)}
             allowClear
+          />
+          <Select
+            aria-label="Filter by enrollment status"
+            value={statusFilter}
+            onChange={setStatusFilter}
+            options={[
+              { label: "All statuses", value: "All" },
+              ...ENROLLMENT_STATUSES.map((status) => ({ label: status, value: status })),
+            ]}
+            style={{ minWidth: 160 }}
           />
         </div>
 

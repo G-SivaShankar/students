@@ -27,6 +27,7 @@ export default function StudentList({
     { title: "Phone", dataIndex: "phone", key: "phone", render: (phone: string | null) => phone || "-" },
     { title: "City", dataIndex: "city", key: "city", render: (city: string | null) => city || "-" },
     { title: "PIN Code", dataIndex: "pinCode", key: "pinCode", render: (pinCode: string | null) => pinCode || "-" },
+    { title: "Status", dataIndex: "status", key: "status", render: (status: string | undefined) => status ?? "Active" },
     {
       title: "Course",
       key: "course",

@@ -17,6 +17,7 @@ const studentProfileSchema = z.object({
 });
 
 const studentEnrollmentSchema = z.object({
+  status: z.enum(["Active", "Graduated", "On leave"]).default("Active"),
   course: z
     .string()
     .trim()
