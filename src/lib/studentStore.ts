@@ -2,10 +2,12 @@ import { randomUUID } from "node:crypto";
 import { readFile, rename, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import type { AttendanceRecord, StoredAttendanceRecord } from "../types/Attendance";
 import type { Student, StudentInput } from "../types/Student";
 
 interface StudentDatabase {
   students: Student[];
+  attendance?: StoredAttendanceRecord[];
   [key: string]: unknown;
 }
 
@@ -18,6 +20,16 @@ async function readDatabase(): Promise<StudentDatabase> {
 
   if (!Array.isArray(database.students)) {
     throw new Error("Student database has an invalid format.");
+  }
+  for (const student of database.students) {
+    const status = student.status as string | undefined;
+    if (status === "On leave" || status === "DropOut") {
+      student.status = "Dropout";
+    }
+  }
+  if (database.attendance === undefined) database.attendance = [];
+  if (!Array.isArray(database.attendance)) {
+    throw new Error("Student attendance data has an invalid format.");
   }
 
   return database;
@@ -94,6 +106,49 @@ export async function deleteStudentRecord(id: string): Promise<boolean> {
     if (index === -1) return false;
 
     database.students.splice(index, 1);
+    database.attendance = (database.attendance ?? []).filter(
+      (record) => record.studentId !== id,
+    );
     return true;
+  });
+}
+
+export async function listAttendanceForDate(date: string): Promise<AttendanceRecord[]> {
+  const database = await readDatabase();
+  return (database.attendance ?? [])
+    .filter((record) => record.date === date)
+    .map(({ studentId, status }) => ({ studentId, status }));
+}
+
+export async function listStudentAttendance(studentId: string): Promise<StoredAttendanceRecord[]> {
+  const database = await readDatabase();
+  return (database.attendance ?? [])
+    .filter((record) => record.studentId === studentId)
+    .map(({ studentId: id, status, date }) => ({ studentId: id, status, date }));
+}
+
+export async function saveAttendanceForDate(
+  date: string,
+  records: AttendanceRecord[],
+): Promise<AttendanceRecord[] | undefined> {
+  return updateDatabase((database) => {
+    const activeStudentIds = new Set(
+      database.students
+        .filter((student) => (student.status ?? "Active") === "Active")
+        .map((student) => String(student.id)),
+    );
+    if (records.some(({ studentId }) => !activeStudentIds.has(studentId))) {
+      return undefined;
+    }
+
+    database.attendance ??= [];
+    database.attendance = database.attendance.filter(
+      (record) => record.date !== date || !activeStudentIds.has(record.studentId),
+    );
+    database.attendance.push(...records.map((record) => ({ ...record, date })));
+
+    return database.attendance
+      .filter((record) => record.date === date)
+      .map(({ studentId, status }) => ({ studentId, status }));
   });
 }

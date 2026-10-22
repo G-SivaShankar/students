@@ -158,6 +158,15 @@ a:hover {
   margin: 0 0 24px;
 }
 
+.attendance-stat-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.attendance-profile-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-bottom: 0;
+}
+
 .stat-card.ant-card {
   border: 1px solid var(--line);
   border-top: 3px solid var(--teal);
@@ -278,6 +287,101 @@ a:hover {
   font-size: 13px;
 }
 
+.attendance-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.attendance-toolbar .ant-input {
+  width: 160px;
+}
+
+.attendance-register.ant-card {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgb(23 45 51 / 4%);
+}
+
+.attendance-profile-section {
+  margin-top: 26px;
+}
+
+.attendance-profile-section > h2.ant-typography {
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.attendance-history {
+  margin-top: 22px;
+}
+
+.attendance-history h3.ant-typography {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.attendance-history-row {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.attendance-history-row .ant-tag {
+  margin: 0;
+}
+
+.attendance-list-heading h2.ant-typography {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+.attendance-list {
+  border-top: 1px solid var(--line);
+}
+
+.attendance-row {
+  display: flex;
+  min-height: 68px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.attendance-row:last-child {
+  border-bottom: 0;
+}
+
+.attendance-student {
+  display: grid;
+  min-width: 0;
+  gap: 3px;
+}
+
+.attendance-student .ant-typography {
+  overflow: hidden;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attendance-row .ant-select {
+  width: 150px;
+  flex: 0 0 auto;
+}
+
 .details-card .ant-card-head-title {
   color: var(--ink);
   font-family: Georgia, "Times New Roman", serif;
@@ -314,6 +418,14 @@ a:hover {
 
 .status-stat-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.attendance-status-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.status-attendance-date {
+  width: 170px;
 }
 
 .status-stat-grid .stat-card:nth-child(2) {
@@ -371,6 +483,11 @@ a:hover {
   white-space: nowrap;
 }
 
+.status-student .ant-tag {
+  width: fit-content;
+  margin: 3px 0 0;
+}
+
 .status-control {
   display: inline-flex;
   flex: 0 0 auto;
@@ -405,9 +522,11 @@ a:hover {
   .primary-nav {
     width: 100%;
     min-height: 48px;
+    overflow-x: auto;
   }
 
   .nav-link {
+    flex: 0 0 auto;
     padding: 0 12px;
   }
 
@@ -430,6 +549,18 @@ a:hover {
     grid-template-columns: 1fr;
   }
 
+  .attendance-status-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .attendance-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .attendance-profile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .list-controls {
     align-items: stretch;
     flex-direction: column;
@@ -442,6 +573,19 @@ a:hover {
   .status-groups {
     grid-template-columns: 1fr;
   }
+
+  .attendance-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .attendance-toolbar .ant-input {
+    width: 100%;
+  }
+
+  .status-attendance-date {
+    width: 100%;
+  }
 }
 
 @media (max-width: 420px) {
@@ -453,6 +597,16 @@ a:hover {
     align-items: flex-start;
     flex-direction: column;
     padding: 12px 0;
+  }
+
+  .attendance-row {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 12px 0;
+  }
+
+  .attendance-row .ant-select {
+    width: 100%;
   }
 
   .status-link-row {

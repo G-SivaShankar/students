@@ -6,7 +6,7 @@ import { Alert, Select, Spin } from "antd";
 import { updateStudent } from "../api/studentAPI";
 import type { Student, StudentInput } from "../types/Student";
 
-const STATUSES = ["Active", "Graduated", "On leave"] as const;
+const STATUSES = ["Active", "Graduated", "Dropout"] as const;
 
 export default function StatusControl({ student }: { student: Student }) {
   const queryClient = useQueryClient();
@@ -31,7 +31,7 @@ export default function StatusControl({ student }: { student: Student }) {
         options={STATUSES.map((status) => ({ label: status, value: status }))}
         suffixIcon={mutation.isPending ? <Spin size="small" /> : undefined}
       />
-      {mutation.error && <Alert className="inline-error" type="error" message="Save failed" />}
+      {mutation.error && <Alert className="inline-error" type="error" title="Save failed" />}
     </span>
   );
 }

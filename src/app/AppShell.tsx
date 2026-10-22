@@ -7,6 +7,7 @@ const navigation = [
   { href: "/students", label: "Students" },
   { href: "/students/new", label: "Add student" },
   { href: "/students/status", label: "Status" },
+  { href: "/attendance", label: "Attendance" },
 ];
 
 export default function AppShell({

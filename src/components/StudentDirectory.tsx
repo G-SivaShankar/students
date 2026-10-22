@@ -9,7 +9,7 @@ import { deleteStudent, getStudents } from "../api/studentAPI";
 import StudentList from "./StudentList";
 
 const STUDENTS_KEY = ["students"];
-const ENROLLMENT_STATUSES = ["Active", "Graduated", "On leave"] as const;
+const ENROLLMENT_STATUSES = ["Active", "Graduated", "Dropout"] as const;
 
 export default function StudentDirectory() {
   const queryClient = useQueryClient();
@@ -68,7 +68,7 @@ export default function StudentDirectory() {
       </section>
 
       {deleteMutation.error && (
-        <Alert className="page-alert" type="error" showIcon message="Could not delete student" description={deleteMutation.error.message} />
+        <Alert className="page-alert" type="error" showIcon title="Could not delete student" description={deleteMutation.error.message} />
       )}
 
       <Card className="list-section">
@@ -98,7 +98,7 @@ export default function StudentDirectory() {
         {isLoading ? (
           <div className="loading-state"><Spin description="Loading students..." /></div>
         ) : isError ? (
-          <Alert type="error" showIcon message="Could not load students" description={error.message} />
+          <Alert type="error" showIcon title="Could not load students" description={error.message} />
         ) : (
           <StudentList
             students={filteredStudents}

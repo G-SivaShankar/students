@@ -7,7 +7,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Student Management",
-  description: "Manage student records and enrollment status.",
+  description: "Manage student records, enrollment status, and attendance.",
 };
 
 export default function RootLayout({

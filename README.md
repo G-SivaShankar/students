@@ -22,9 +22,10 @@ Open `http://localhost:3000`.
 - `/students/new` — add a student
 - `/students/[id]` — view, edit, or delete a student
 - `/students/status` — review enrollment counts and update statuses
+- `/attendance` — mark active students Present, Absent, or Half day for a selected date
 
 The API is served by the Next.js app under `/api/students`.
 
 ## Data storage
 
-Student records are read from and written to `db.json` by the Node.js API routes. This file-backed storage is intended for local development and a single running instance. It is not suitable for serverless or multi-instance hosting; use a database before deploying that way.
+Student and attendance records are read from and written to `db.json` by the Node.js API routes. Attendance is stored by student and date; half days count as half a day in profile attendance rates. This file-backed storage is intended for local development and a single running instance. It is not suitable for serverless or multi-instance hosting; use a database before deploying that way.

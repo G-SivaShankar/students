@@ -137,7 +137,7 @@ export default function StudentForm({
                 render={({ field }) => (
                   <Select
                     {...field}
-                    options={["Active", "Graduated", "On leave"].map((status) => ({
+                    options={["Active", "Graduated", "Dropout"].map((status) => ({
                       label: status,
                       value: status,
                     }))}

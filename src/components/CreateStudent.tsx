@@ -34,7 +34,7 @@ export default function CreateStudent() {
         <Button href="/students">Back to students</Button>
       </div>
       {mutation.error && (
-        <Alert className="page-alert" type="error" showIcon message="Student could not be saved" description={mutation.error.message} />
+        <Alert className="page-alert" type="error" showIcon title="Student could not be saved" description={mutation.error.message} />
       )}
       <StudentForm
         editingStudent={null}

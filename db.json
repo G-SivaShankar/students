@@ -38,7 +38,7 @@
       "phone": "2345678122",
       "city": "erode",
       "pinCode": "643652",
-      "status": "Active",
+      "status": "Dropout",
       "course": "React",
       "additionalCourses": [],
       "id": "bkP4CEaeByI"
@@ -79,7 +79,7 @@
       "phone": "3454535352",
       "city": "tirunelveli",
       "pinCode": "657642",
-      "status": "On leave",
+      "status": "Active",
       "course": "TypeScript",
       "additionalCourses": [],
       "id": "fffe173f-5025-425c-a61a-d3734eaa471f"
@@ -90,7 +90,7 @@
       "phone": "8877876777",
       "city": "vellore",
       "pinCode": "687654",
-      "status": "On leave",
+      "status": "Active",
       "course": "Full Stack",
       "additionalCourses": [
         {
@@ -102,5 +102,32 @@
   ],
   "$schema": [
     "./node_modules/json-server/schema.json"
+  ],
+  "attendance": [
+    {
+      "studentId": "8G79UlkzbZ4",
+      "status": "Present",
+      "date": "2026-10-22"
+    },
+    {
+      "studentId": "Fz7zz31emgs",
+      "status": "Present",
+      "date": "2026-10-22"
+    },
+    {
+      "studentId": "bkP4CEaeByI",
+      "status": "Present",
+      "date": "2026-10-22"
+    },
+    {
+      "studentId": "fffe173f-5025-425c-a61a-d3734eaa471f",
+      "status": "Absent",
+      "date": "2026-10-22"
+    },
+    {
+      "studentId": "ab13176b-3f8c-4359-ba0f-8ed12dcae663",
+      "status": "Absent",
+      "date": "2026-10-22"
+    }
   ]
 }
