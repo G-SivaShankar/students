@@ -1,24 +1,7 @@
 import type { AttendanceRecord, AttendanceStatus, StoredAttendanceRecord } from "../types/Attendance";
+import { request } from "./request";
 
 const API_URL = "/api/attendance";
-
-async function request<T>(url: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(url, {
-    ...options,
-    headers: {
-      ...(options?.body ? { "Content-Type": "application/json" } : {}),
-      ...options?.headers,
-    },
-    cache: "no-store",
-  });
-
-  if (!response.ok) {
-    const body = await response.json().catch(() => null) as { error?: string } | null;
-    throw new Error(body?.error ?? `Request failed (${response.status})`);
-  }
-
-  return response.json() as Promise<T>;
-}
 
 export async function getAttendanceForDate(date: string): Promise<AttendanceRecord[]> {
   return request<AttendanceRecord[]>(`${API_URL}?date=${encodeURIComponent(date)}`);

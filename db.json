@@ -98,6 +98,17 @@
         }
       ],
       "id": "ab13176b-3f8c-4359-ba0f-8ed12dcae663"
+    },
+    {
+      "name": "rohit",
+      "email": "rooo123@gmail.com",
+      "phone": "2345343543",
+      "city": "chennai",
+      "pinCode": "600026",
+      "status": "Active",
+      "course": "Full Stack",
+      "additionalCourses": [],
+      "id": "29e62f5f-4599-49cf-8130-fb47b09fe595"
     }
   ],
   "$schema": [
@@ -105,17 +116,17 @@
   ],
   "attendance": [
     {
+      "studentId": "bkP4CEaeByI",
+      "status": "Present",
+      "date": "2026-10-22"
+    },
+    {
       "studentId": "8G79UlkzbZ4",
       "status": "Present",
       "date": "2026-10-22"
     },
     {
       "studentId": "Fz7zz31emgs",
-      "status": "Present",
-      "date": "2026-10-22"
-    },
-    {
-      "studentId": "bkP4CEaeByI",
       "status": "Present",
       "date": "2026-10-22"
     },
@@ -128,6 +139,36 @@
       "studentId": "ab13176b-3f8c-4359-ba0f-8ed12dcae663",
       "status": "Absent",
       "date": "2026-10-22"
+    },
+    {
+      "studentId": "29e62f5f-4599-49cf-8130-fb47b09fe595",
+      "status": "Present",
+      "date": "2026-10-22"
+    },
+    {
+      "studentId": "8G79UlkzbZ4",
+      "status": "Present",
+      "date": "2026-10-23"
+    },
+    {
+      "studentId": "Fz7zz31emgs",
+      "status": "Present",
+      "date": "2026-10-23"
+    },
+    {
+      "studentId": "fffe173f-5025-425c-a61a-d3734eaa471f",
+      "status": "Present",
+      "date": "2026-10-23"
+    },
+    {
+      "studentId": "ab13176b-3f8c-4359-ba0f-8ed12dcae663",
+      "status": "Half day",
+      "date": "2026-10-23"
+    },
+    {
+      "studentId": "29e62f5f-4599-49cf-8130-fb47b09fe595",
+      "status": "Absent",
+      "date": "2026-10-23"
     }
   ]
 }

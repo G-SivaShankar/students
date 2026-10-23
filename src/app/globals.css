@@ -263,7 +263,6 @@ a:hover {
   gap: 10px;
 }
 
-.operation-error,
 .page-alert {
   margin-bottom: 20px;
 }
@@ -272,10 +271,6 @@ a:hover {
   display: grid;
   min-height: 180px;
   place-items: center;
-}
-
-.empty-hint {
-  margin-bottom: 4px;
 }
 
 .status-link-row {

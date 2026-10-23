@@ -1,5 +1,5 @@
 import type { Student } from "../types/Student";
-import { Button, Empty, Popconfirm, Space, Table, Typography } from "antd";
+import { Button, Empty, Popconfirm, Space, Table } from "antd";
 import type { TableColumnsType } from "antd";
 import Link from "next/link";
 
@@ -58,20 +58,13 @@ export default function StudentList({
   ];
 
   return (
-    <>
-      {students.length === 0 && (
-        <Typography.Paragraph type="secondary" className="empty-hint">
-          Add your first student or adjust the search.
-        </Typography.Paragraph>
-      )}
-      <Table<Student>
-        rowKey={(student) => String(student.id)}
-        columns={columns}
-        dataSource={students}
-        pagination={{ pageSize: 8, showSizeChanger: true }}
-        scroll={{ x: 900 }}
-        locale={{ emptyText: <Empty description="No students found" /> }}
-      />
-    </>
+    <Table<Student>
+      rowKey={(student) => String(student.id)}
+      columns={columns}
+      dataSource={students}
+      pagination={{ pageSize: 8, showSizeChanger: true }}
+      scroll={{ x: 900 }}
+      locale={{ emptyText: <Empty description="No students found" /> }}
+    />
   );
 }

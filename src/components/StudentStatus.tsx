@@ -7,18 +7,12 @@ import { Alert, Card, Empty, Input, Spin, Statistic, Tag, Typography } from "ant
 
 import { getAttendanceForDate } from "../api/attendanceAPI";
 import { getStudents } from "../api/studentAPI";
+import { localDateString } from "../lib/date";
 import type { AttendanceStatus } from "../types/Attendance";
 import type { Student } from "../types/Student";
 import StatusControl from "./StatusControl";
 
 const STATUSES = ["Active", "Graduated", "Dropout"] as const;
-
-function localDateString(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
 
 export default function StudentStatus() {
   const [attendanceDate, setAttendanceDate] = useState(() => localDateString(new Date()));
